@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+            height: 100vh;
+            width: 100vw;
+            background-image: url("tac.jpg");
+            background-size: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+        .box{
+            height: 425px;
+            width: 425px;
+            display: flex;
+            background-color: rgba(10, 15, 80, .1);
+            backdrop-filter: blur(10px);
+            border-radius: 5px;
+            
+        }
+        .block{
+            height: 140px;
+            width: 140px;
+           /* border: 1px solid rgb(177, 23, 177);*/
+            box-shadow: 1px 1px 2px 2px rgb(42, 0, 110),
+                        -1px -1px 2px 2px rgb(132, 57, 252);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+            color: white;
+            text-shadow: 3px 3px 6px rgb(47, 0, 255),
+                        -3px -3px 6px rgb(47, 0, 255);
+             z-index: 1;
+        }
+        .btn{
+            position: relative;
+            height: 45px;
+            width: 420px;
+            background-color: rgba(10, 15, 80, .1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgb(42, 0, 110);
+            color: white;
+            text-shadow: 3px 3px 6px rgb(47, 0, 255),
+                        -3px -3px 6px rgb(47, 0, 255);
+            font-size: 30px;            
+        }
+        .h2{
+            color: white;
+            text-shadow: 3px 3px 6px rgb(47, 0, 255),
+                        -3px -3px 6px rgb(47, 0, 255);
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="h2" id="h2"></div>
+    <div class="box">
+        <div class="row1">
+        <div class="block" id="blk1"></div>
+        <div class="block" id="blk2"></div>
+        <div class="block" id="blk3"></div>
+        </div>
+    <div class="row2">
+        <div class="block" id="blk4"></div>
+        <div class="block" id="blk5"></div>
+        <div class="block" id="blk6"></div>
+     </div>
+     <div class="row3">
+        <div class="block" id="blk7"></div>
+        <div class="block" id="blk8"></div>
+        <div class="block" id="blk9"></div>
+     </div>
+    </div>
+    <button onclick="btn()" class="btn">Rematch</button>
+    <script>
+        //variables
+        let winMsg = document.getElementById("h2");
+        let block1 = document.getElementById("blk1");
+        let block2 = document.getElementById("blk2");
+        let block3 = document.getElementById("blk3");
+        let block4 = document.getElementById("blk4");
+        let block5 = document.getElementById("blk5");
+        let block6 = document.getElementById("blk6");
+        let block7 = document.getElementById("blk7");
+        let block8 = document.getElementById("blk8");
+        let block9 = document.getElementById("blk9");
+
+     //button click event
+
+        block1.addEventListener("click", blk1);
+        block2.addEventListener("click", blk2);
+        block3.addEventListener("click", blk3);
+        block4.addEventListener("click", blk4);
+        block5.addEventListener("click", blk5);
+        block6.addEventListener("click", blk6);
+        block7.addEventListener("click", blk7);
+        block8.addEventListener("click", blk8);
+        block9.addEventListener("click", blk9);
+
+        //array of symbols
+
+          let symbols = ["O", "X", "O", "X", "O", "X", "O", "X", "O"];
+        
+        //defining the index of array using count
+        let count = -1;
+
+        function blk1(){
+            count++;
+           block1.innerHTML = symbols[count];
+           block1.removeEventListener("click", blk1);
+        
+        }
+        function blk2(){
+            count++;
+           block2.innerHTML = symbols[count];
+           block2.removeEventListener("click", blk2);
+        }
+        function blk3(){
+            count++;
+           block3.innerHTML = symbols[count];
+           block3.removeEventListener("click", blk3);
+        }
+        function blk4(){
+            count++;
+           block4.innerHTML = symbols[count];
+           block4.removeEventListener("click", blk4);
+        }
+        function blk5(){
+            count++;
+           block5.innerHTML = symbols[count];
+           block5.removeEventListener("click", blk5);
+        }
+        function blk6(){
+            count++;
+           block6.innerHTML = symbols[count];
+           block6.removeEventListener("click", blk6);
+        }
+        function blk7(){
+            count++;
+           block7.innerHTML = symbols[count];
+           block7.removeEventListener("click", blk7);
+        }
+        function blk8(){
+            count++;
+           block8.innerHTML = symbols[count];
+           block8.removeEventListener("click", blk8);
+        }
+        function blk9(){
+            count++;
+           block9.innerHTML = symbols[count];
+           block9.removeEventListener("click", blk9);
+        }
+        function btn(){
+            window.location.reload();
+        }
+
+        //winning Logic
+
+        function winner(){
+            if(
+                   (block1.innerHTML == "X" && block2.innerHTML == "X"  && block3.innerHTML == "X")
+                || (block4.innerHTML == "X" && block5.innerHTML == "X" && block6.innerHTML == "X")
+                || (block7.innerHTML == "X" && block8.innerHTML == "X" && block9.innerHTML == "X")
+                || (block1.innerHTML == "X" && block4.innerHTML == "X" && block7.innerHTML == "X")
+                || (block2.innerHTML == "X" && block5.innerHTML == "X" && block8.innerHTML == "X")
+                || (block3.innerHTML == "X" && block6.innerHTML == "X" && block9.innerHTML == "X")
+                || (block1.innerHTML == "X" && block5.innerHTML == "X" && block9.innerHTML == "X")
+                || (block3.innerHTML == "X" && block5.innerHTML == "X" && block7.innerHTML == "X")
+            ){
+                winMsg.innerHTML = "X has won";
+            }
+
+            if(
+                   (block1.innerHTML == "O" && block2.innerHTML == "O"  && block3.innerHTML == "O")
+                || (block4.innerHTML == "O" && block5.innerHTML == "O" && block6.innerHTML == "O")
+                || (block7.innerHTML == "O" && block8.innerHTML == "O" && block9.innerHTML == "O")
+                || (block1.innerHTML == "O" && block4.innerHTML == "O" && block7.innerHTML == "O")
+                || (block2.innerHTML == "O" && block5.innerHTML == "O" && block8.innerHTML == "O")
+                || (block3.innerHTML == "O" && block6.innerHTML == "O" && block9.innerHTML == "O")
+                || (block1.innerHTML == "O" && block5.innerHTML == "O" && block9.innerHTML == "O")
+                || (block3.innerHTML == "O" && block5.innerHTML == "O" && block7.innerHTML == "O")
+            ){
+                winMsg.innerHTML = "O has won";
+            }
+        }
+        setInterval(winner, 1000);
+
+        
+        
+    </script>
+</body>
+</html>
